@@ -1,0 +1,71 @@
+
+@import "abstracts/variables";
+@import "component/buttons";
+@import "abstracts/mixins";
+// h1 {
+//   &.main-title {
+//     color: $primary-color;
+//   }
+// }
+// p{
+//     &.main-subtitle{
+//         color: $seconday-color;
+//     }
+// }
+
+// button{
+//     &.main-btn:hover{
+//         background-color:$seconday-color-butt;
+      
+//     }
+//      &.main-btn{
+//         background-color: $main-color-butt;
+      
+//     }
+    
+// }
+
+.main {
+    &-title {
+    color: $primary-color;
+
+    }
+    &-subtitle{
+        color: $seconday-color;
+
+    }
+    &-btn{
+        background-color: $main-color-butt;
+
+        &:hover{
+        background-color:$seconday-color-butt;
+
+        }
+    }
+}
+
+
+@each $i in $font-array{
+    .font-#{$i}{
+        font-size: $i;
+
+    }
+
+}
+
+.finish-btn {
+@media (min-width: 768px) and (max-width: 1000px) {
+    width: $width-butt-tablet;
+  }
+
+  @media (max-width: 767px) {
+    width: $width-butt-phone;
+  }
+}
+
+
+
+
+
+@include gridSystem();
+

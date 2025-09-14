@@ -1,0 +1,32 @@
+
+@mixin gridSystem() {
+@for $i from 1 to 13 {
+      .col-#{$i} {
+        width: calc((100%/ 12)*$i);
+      }
+    }
+     $screensArr:("sm":500px,"md":1000px,"lr":1200px);
+  @each $name ,$va in $screensArr{
+  
+    @media (min-width: $va ){
+
+        $total:12;
+    @for $i from 1 to 13 {
+      .col-#{$name}#{$i} {
+        width: calc((100%/ $total)*$i);
+      }
+    }
+    }
+  } 
+}
+  
+@mixin grid2(){
+
+    $total:12;
+    @for $i from 1 to 13 {
+      .col-#{$name}#{$i} {
+        width: calc((100%/ $total)*$i);
+      }
+    }
+ 
+}
