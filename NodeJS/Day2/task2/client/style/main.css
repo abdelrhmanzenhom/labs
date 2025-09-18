@@ -1,0 +1,14 @@
+form{
+    display: flex;
+    flex-wrap: wrap;
+    width:500px;
+    margin: auto;
+    gap: 5px;
+}
+input{
+    width: 300px;
+}
+label{
+    display: inline-block;
+    width: 100%;
+}
