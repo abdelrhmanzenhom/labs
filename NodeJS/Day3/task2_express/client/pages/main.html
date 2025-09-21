@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style/main.css">
+</head>
+<body>
+    
+    <form  action="./welcom.html" method="post">
+        <div class="title">Welcome</div>
+       <label for="username">your name</label>
+        
+        <input type="text" name="username" id="" required placeholder="enter ur name">
+         <label for="username">number</label>
+        <input type="number" name="number" id="" required placeholder="number">
+         <label for="username">address</label>
+        <input type="text" name="address" id="" required placeholder="address">
+         <label for="username">email</label>
+        <input type="text" name="email" id="" required placeholder="email">
+
+        <input type="submit" id="butt">
+    </form>
+    <script>
+        let form=document.querySelector("form");
+        form.addEventListener('submit',function(e){
+  let name=document.querySelector("[name=username]");
+        let number=document.querySelector("[name=number]");
+        let address=document.querySelector("[name=address]");
+        let email=document.querySelector("[name=email]");
+        if(name.value.trim().length<2){
+            e.preventDefault();
+            alert("your name must be longer than 2");
+        }
+        else if(number.value.trim().length!=11){
+              e.preventDefault();
+            alert("this is a wrong phone number");
+        }
+        else if (!email.value.includes("@") || !email.value.includes(".")) {
+            alert("email must contain @ and .");
+            e.preventDefault();
+        }
+        })
+      
+       
+    </script>
+</body>
+</html>
