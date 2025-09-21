@@ -8,6 +8,7 @@ let ticket3=new Flight(3,4,"tawhed","nor","2024");
 user.AddTicket(ticket)
 user.AddTicket(ticket2)
 user.AddTicket(ticket3)
+
 console.log(user.displayTickets());
 console.log(user.getTicket(3));
 let t=user.getTicket(3);

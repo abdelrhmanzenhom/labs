@@ -4,6 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+      
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+          
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        #clientsButt {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #clientsButt:hover {
+            background-color: #45a049;
+        }
+
+        #clientsList {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <p>
@@ -14,7 +60,8 @@
         <li>Emaiil: {email}</li>
         <li>Address: {address}</li>
     </ul>
-    <button>get all users</button>
-    
+    <button id="clientsButt">Show All Clients</button>
+    <div id="clientsList"></div>
+    <script src="../scripts/mian.js"></script>
 </body>
 </html>

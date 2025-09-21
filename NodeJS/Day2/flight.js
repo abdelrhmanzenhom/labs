@@ -7,10 +7,7 @@ class FlightTicket{
         this.arrivalAirPorts=arrivalAirPorts;
         this.TravelingData=TravelingData;
     }
-    get() {
-
-        return `${this.seatNum},${this.flightNum},${this.departureAirPorts},${this.arrivalAirPorts},${this.TravelingData},`
-    }
+    
     updateSeatNum(seatNum){
         this.seatNum=seatNum
     }
@@ -28,7 +25,5 @@ class FlightTicket{
     }
 
 }
-
-
 
 module.exports=FlightTicket;

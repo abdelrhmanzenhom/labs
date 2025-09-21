@@ -29,6 +29,31 @@ if(req.method=="GET"){
         res.setHeader("content-type","text/css");
         res.write(maincss);
         break;
+    case "/clients": 
+      res.setHeader("content-type", "application/json");
+      fs.readFile("client.json", "utf-8", (err, data) => {
+        if (err) {
+          res.write("error"); 
+        } else {
+          res.write(data);
+        }
+        res.end();
+      });
+      return;
+    case "/scripts/mian.js":
+  res.setHeader("content-type", "application/javascript");
+  fs.readFile("../client/scripts/mian.js", "utf-8", (err, data) => {
+    if (err) {
+      res.writeHead(404);
+      res.write("File not found");
+    } else {
+      res.write(data);
+    }
+    res.end();
+  });
+  return;
+    
+
  }
  res.end();
 }
@@ -37,21 +62,43 @@ else if(req.method=="POST"){
 
  const parameters=new URLSearchParams(data.toString());
  let json = {};
+ let clints=[];
 for (let [key, value] of parameters.entries()) {
   json[key] = value;
+  
 }
+
+
        // console.log(url);
      console.log(parameters)
-     console.log()
+    
        welcomPage= welcomPage.replace("{clientName}",parameters.get("username"));
        welcomPage=welcomPage.replace("{mobileNumber}",parameters.get("number"));
        welcomPage=welcomPage.replace("{email}",parameters.get("email"));
        welcomPage=welcomPage.replace("{address}",parameters.get("address"));
       
-       fs.appendFile("client.json",JSON.stringify(json),(e)=>{
-       console.log("error");
+     const filePath = "client.json";
+    fs.readFile(filePath,"utf-8",(err,data) => {
+      let clients = [];
 
-       });
+      if (!err&&data.trim().length>0) {
+        try {
+          clients = JSON.parse(data);
+        } catch (e) {
+          console.error("error");
+          clients = [];
+        }
+      }
+      clients.push(json);
+      fs.writeFile(filePath, JSON.stringify(clients,null,2),(err) => {
+        if (err) {
+          console.error(err);
+        } else {
+          console.log("Client saved successfully!");
+        }
+      });
+    });
+       
 
  
 switch(url){
@@ -62,6 +109,8 @@ switch(url){
        
 
         break;
+
+         
     
  }
  res.end();
