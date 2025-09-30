@@ -1,0 +1,39 @@
+
+body{
+ width: 100vw;
+    height: 100vh; 
+ background-color: yellow;
+}
+header{
+   margin: 100px; 
+   background-color: orangered;
+   padding: 30px;
+text-align: center;
+font-size: 25px;
+width: 100%;
+
+margin: 0;
+}
+h1{
+    margin: 0;
+}
+main{
+    width: 500px;
+    height: 300px;
+   
+        margin: auto ;
+}
+
+article{
+    width: 90%;
+    background-color: orangered;
+    padding: 30px;
+}
+
+#AddBtn{
+    padding: 20px;
+    text-align: center;
+}
+.tasksList{
+    background-color: brown;
+}
