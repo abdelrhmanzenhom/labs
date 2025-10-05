@@ -1,0 +1,12 @@
+<p>swap-tasks works!</p>
+
+<div class="container">
+    <button (click)="change('Task1')">Task1</button>
+    <button (click)="change('Task2')">Task2</button>
+    <div *ngIf="choosenTask=='Task1'">
+        <app-product-dash-board></app-product-dash-board>
+    </div>
+    <div *ngIf="choosenTask=='Task2'">
+       <app-swtich-task></app-swtich-task>
+    </div>
+</div>

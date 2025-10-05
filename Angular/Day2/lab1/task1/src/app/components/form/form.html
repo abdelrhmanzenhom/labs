@@ -1,0 +1,11 @@
+<h1>The Form Task</h1>
+<div class="main">
+    
+    <label for="name">enter your name</label>
+    <input id="name" type="text" #inputName>
+    <label for="number">enter your number</label>
+    <input id="number" type="text" #inputNum>
+    <button (click)="Add(inputName,inputNum)">Add</button>
+    <p>{{name}}</p>
+    <p>{{num}}</p>
+</div>

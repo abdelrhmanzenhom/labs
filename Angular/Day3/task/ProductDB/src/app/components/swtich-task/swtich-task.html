@@ -1,0 +1,14 @@
+<h1>notification center</h1>
+<select name="" id="choose" [(ngModel)]="choosen" >
+    <option value="Success">Success</option>
+    <option value="Error">Error</option>
+    <option value="Warning">Warning</option>
+    <option value="Info">Info</option>
+</select>
+
+<div [ngSwitch]="choosen" >
+ <div *ngSwitchCase="'Success'" class="green">{{choosen}} </div>
+ <div *ngSwitchCase="'Error'" class="red">{{choosen}} </div>
+ <div *ngSwitchCase="'Warning'" class="yellow">{{choosen}} </div>
+ <div *ngSwitchCase="'Info'" class="blue">{{choosen}} </div>
+</div>

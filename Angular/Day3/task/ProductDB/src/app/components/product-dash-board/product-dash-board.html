@@ -1,0 +1,22 @@
+
+<main>
+    <h1>Product Dashboard</h1>
+    <div *ngFor="let fav of favArr">
+        <p>Favourite Products: {{fav.name}}</p>
+    </div>
+    <label for="name">Name</label>
+    <input type="text" id="name" [(ngModel)]="name">
+    <label for="price">Price</label>
+    <input type="text" id="price" [(ngModel)]="price">
+    <label for="category">Category</label>
+    <input type="text" id="category" [(ngModel)]="category">
+    <button (click)="AddProduct()">Add</button>
+</main>
+ <div *ngFor="let product of products">
+   <h3>{{product.name}}</h3>
+<p>price: {{product.price}} </p> 
+<p>category: {{product.category}} </p>   
+<button (click)="AddFav(product)">Favorite</button> 
+<button (click)="DeleteProduct(product)">Delete</button>
+ </div>
+   
