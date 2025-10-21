@@ -1,0 +1,34 @@
+
+.formS{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    background-color: #EEE;
+    color: gold;
+    text-align: center;
+    padding: 30px;
+    margin: auto;
+    gap: 10px;
+    border-radius: 7px;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+label{
+    font-size: 25px;
+}
+input{
+    padding: 9px;
+    border-radius: 7px;
+    border: 0;
+
+}
+input[type="submit"]{
+    background-color: gold;
+    color: white;
+    cursor: pointer;
+    margin: 10px;
+}
+input[type="submit"]:hover{
+    background-color: rebeccapurple;
+    
+}
