@@ -14,23 +14,24 @@ class Document {
         console.log("Text:", this.text);
        
     }
+    clone() {
+        return Object.create(this);
+    }
 }
 
 
 const originalDoc = new Document(
-    "Original Header",
-    "Original Footer",
+    "the main header",
+    "the main footer",
     5,
-    "This is the content of the original document."
+    "This is the content of the first document."
 );
 
 originalDoc.display();
 
 
-const clonedDoc = Object.create(originalDoc);
-clonedDoc.header = "Cloned Header";
+const clonedDoc = originalDoc.clone();
+clonedDoc.header = "clone header";
 clonedDoc.pages = 3;
 clonedDoc.display();
-
-
 originalDoc.display();
