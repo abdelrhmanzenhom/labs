@@ -6,14 +6,13 @@ class Document {
         this.pages = pages;
         this.text = text;
     }
-
     display() {
         console.log("Document:");
         console.log("Header:", this.header);
         console.log("Footer:", this.footer);
         console.log("Pages:", this.pages);
         console.log("Text:", this.text);
-        console.log("---------------------");
+       
     }
 }
 
@@ -31,7 +30,6 @@ originalDoc.display();
 const clonedDoc = Object.create(originalDoc);
 clonedDoc.header = "Cloned Header";
 clonedDoc.pages = 3;
-
 clonedDoc.display();
 
 

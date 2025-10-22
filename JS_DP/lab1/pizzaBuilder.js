@@ -1,16 +1,5 @@
-class Pizza{
-   constructor() {
-        this.size = null;
-        this.cheese = false;
-        this.pepperoni = false;
-        this.bacon = false;
-        this.onion=false;
-    }
-     display() {
-        console.log(`Pizza [Size: ${this.size}, Cheese: ${this.cheese}, Pepperoni: ${this.pepperoni}, Bacon: ${this.bacon},]`);
-    }
-}
-class PizzaBuilder{
+import Pizza from "./pizza.js";
+export default class PizzaBuilder{
     constructor(){
     this.pizza=new Pizza()
     }
@@ -35,5 +24,4 @@ builder=()=>{
 }
 }
 
-let p1=new PizzaBuilder().setSize("3").addBacon().builder();
-p1.display()
+

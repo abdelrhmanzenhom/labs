@@ -1,0 +1,29 @@
+
+<main>
+<h1>notification center</h1>
+
+<select name="" id="choose" [(ngModel)]="choosen" >
+    <option value="" disabled selected>none</option>
+    <option value="Success">Success</option>
+    <option value="Error">Error</option>
+    <option value="Warning">Warning</option>
+    <option value="Info">Info</option> 
+</select>
+ @switch (choosen) {
+    @case ('Success') {
+      <div class="green">{{ choosen }} <span>profile updated successfully!</span></div>
+    }
+    @case ('Error') {
+      <div class="red">{{ choosen }} <span>Failed to load user data!</span></div>
+    }
+    @case ('Warning') {
+      <div class="yellow">{{ choosen }} <span>Password is weak!</span></div>
+    }
+    @case ('Info') {
+      <div class="blue">{{ choosen }} <span>New updates are available!</span></div>
+    }
+    @default {
+      <div class="blak">{{ choosen }} Please choose a notification type.</div>
+    }
+  }
+</main>

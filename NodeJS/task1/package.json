@@ -1,0 +1,9 @@
+{
+  "name": "fibo-module",        
+  "version": "1.0.0",
+  "description": "fibonacii",
+  "main": "fab.js",             
+  "keywords": ["fibonacci","math"],
+  "author": "zenhom",
+  "license": "MIT"
+}

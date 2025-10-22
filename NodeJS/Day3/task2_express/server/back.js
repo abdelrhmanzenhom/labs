@@ -1,9 +1,11 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
-const bodyParser = require("body-parser");
+
 const app = express();
 const PORT = 7000;
+
+
 app.use("/style", express.static(path.join(__dirname, "../client/style")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
@@ -26,20 +28,30 @@ app.get("/scripts/mian.js",(req,res)=>{
 res.sendFile(path.join(__dirname, "../client/scripts/mian.js"));
 })
 
-app.delete("/clients/:email",(req,res)=>{
-  const data = fs.readFileSync("client.json", "utf-8");
-  let clients=[];
-    clients = JSON.parse(data);
-    console.log(req.params.email);
-    console.log()
-    let afterDeleteArr=clients.filter((e)=>{
-      return e.email!=req.params.email;
-      console.log(e.email);
-    })
-    console.log(afterDeleteArr);
-    fs.writeFileSync("client.json", JSON.stringify(afterDeleteArr, null, 2));
 
-})
+app.delete("/clients/:email", (req, res) => {
+  
+  const email = req.params.email;
+
+  
+  let data = fs.readFileSync("client.json", "utf-8");
+  let clients = JSON.parse(data);
+
+  
+  let newClients = clients.filter(c => c.email !== email);
+
+  
+  if (newClients.length === clients.length) {
+    res.json({ message: "Client not found" });
+    return;
+  }
+
+  
+  fs.writeFileSync("client.json", JSON.stringify(newClients));
+
+  res.json({ message: "Client deleted" });
+});
+
 app.post("/welcom.html", (req, res) => {
   const { username, number, email, address } = req.body;
 
@@ -65,6 +77,37 @@ app.post("/welcom.html", (req, res) => {
 
   res.type("html").send(page);
 });
+
+
+app.put("/clients/:email", (req, res) => {
+  const email = req.params.email;
+  const { username, number, address } = req.body;
+
+
+  let data = fs.readFileSync("client.json", "utf-8");
+  let clients = JSON.parse(data);
+
+  
+  
+  for (let i = 0; i < clients.length; i++) {
+    if (clients[i].email === email) {
+      if (username) clients[i].username = username;
+      if (number) clients[i].number = number;
+      if (address) clients[i].address = address;
+      found = true;
+      break;
+    }
+  }
+
+
+
+  
+  fs.writeFileSync("client.json", JSON.stringify(clients));
+
+  res.json({ message: "Client updated" });
+});
+
+
 
 
 app.listen(PORT, () => {

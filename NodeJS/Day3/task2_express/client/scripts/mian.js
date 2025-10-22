@@ -21,6 +21,17 @@ clientsButt.addEventListener("click", () => {
         let deleteButt=document.createElement("button");
         deleteButt.innerText="delete";
 
+          let updateButt = document.createElement("button");
+           updateButt.innerText = "Update";
+           updateButt.setAttribute("style", `background-color: #3498db;
+            color: white;
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;`);
+
+
         deleteButt.setAttribute("style",` background-color: #4CAF50;
             color: white;
             padding: 12px 24px;
@@ -57,18 +68,51 @@ clientsButt.addEventListener("click", () => {
         `;
         
         div.appendChild(deleteButt);
+        div.appendChild(updateButt);
+        
+
           deleteButt.onclick=()=>{
               fetch(`/clients/${client.email}`, { method: "DELETE" })
           .then(res => res.json())
           .then(result => {
            // console.log(result);
-           div.remove();
            
+           div.remove();
     
                   
             })
 
           };
+
+          updateButt.onclick = () => {
+          let newName = prompt("Enter new name:", client.username);
+          let newNumber = prompt("Enter new number:", client.number);
+          let newAddress = prompt("Enter new address:", client.address);
+
+          if (!newName || !newNumber || !newAddress) {
+            alert("Update cancelled. All fields are required.");
+            return;
+          }
+
+          fetch(`/clients/${client.email}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              username: newName,
+              number: newNumber,
+              address: newAddress
+            })
+          })
+            .then(res => res.json())
+            .then(result => {
+              // Refresh card content
+              div.querySelector("h3").innerText = newName;
+              div.querySelector("p:nth-of-type(1)").innerText = "Mobile: " + newNumber;
+              div.querySelector("p:nth-of-type(3)").innerText = "Address: " + newAddress;
+            })
+            .catch(err => console.error(err));
+        };
+
        
         container.appendChild(div);
       });
