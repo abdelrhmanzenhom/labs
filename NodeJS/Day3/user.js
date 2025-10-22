@@ -1,22 +1,17 @@
-class User{
-    constructor(id){
-        this.tecketArr=[];
-        this.id=id;
-    }
-    AddTicket(ticket){
-        this.tecketArr.push(ticket);
-    }
-    getTicket(flightNum){
-        for(let i=0;i<this.tecketArr.length;i++)
-            if(this.tecketArr[i].flightNum==flightNum)
-                return this.tecketArr[i];
-    return "there is no flight with this number";
-    }
-    displayTickets(){
-        if(this.tecketArr.length>0)
-        return this.tecketArr;
-        else return "there is no tickets"
-    }
+(function (root, factory) {
+	if (typeof module !== "undefined" && module.exports) {
+		module.exports = factory();   // return the module
+	} else {
+		root.fiboModule = factory();  // browser global
+	}
+}(this, function () {
 
-}
-module.exports=User;
+	function fibonacci(n) {
+		if (n < 0) throw new Error("Negative numbers not allowed");
+		if (n === 1) return 0;
+		if (n === 2) return 1;
+		return fibonacci(n - 1) + fibonacci(n - 2);
+	}
+
+	return { fibonacci };
+}));

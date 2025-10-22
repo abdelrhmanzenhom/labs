@@ -1,0 +1,48 @@
+<h1>Product List</h1>
+
+<app-product-form (NewProduct)="addProduct($event)"></app-product-form>
+
+<hr>
+
+<h2>All Products</h2>
+<div class="list">
+  @for (product of products; track product) {
+    <div class="item">
+      @if (editingIndex === $index) {
+        <div>
+          <input [(ngModel)]="editedProduct!.name" placeholder="Name">
+          <input type="number" [(ngModel)]="editedProduct!.price" placeholder="Price">
+          <input [(ngModel)]="editedProduct!.category" placeholder="Category">
+       
+          <button (click)="saveEdit()">Save</button>
+          <button (click)="cancelEdit()">Cancel</button>
+        </div>
+      } @else {
+        <p>
+          <b>{{ product.name }}</b> — ${{ product.price }} ({{ product.category }})
+        </p>
+        <button (click)="startEdit($index)">Update</button>
+        <button (click)="deleteProduct($index)">Delete</button>
+
+        @if (!product.isFav) {
+          <button (click)="addToFavorites(product)">Add to Favorites</button>
+        } @else {
+          <button (click)="removeFromFavorites(product)">Remove Favorite</button>
+        }
+      }
+    </div>
+  }
+</div>
+
+<hr>
+
+<h2>Favorite Products</h2>
+<div class="favorites">
+  @if (favoriteProducts.length === 0) {
+    <p>No favorite products yet</p>
+  } @else {
+    @for (fav of favoriteProducts; track fav) {
+      <p><b>{{ fav.name }}</b> — ${{ fav.price }} ({{ fav.category }})</p>
+    }
+  }
+</div>
